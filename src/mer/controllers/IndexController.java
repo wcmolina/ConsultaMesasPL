@@ -1,6 +1,6 @@
-package MER.controllers;
+package mer.controllers;
 
-import MER.models.MiembroMer;
+import mer.models.MiembroMer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import mer.util.DbUtil;
 
 import java.sql.*;
 
@@ -29,31 +30,20 @@ public class IndexController {
     }
 
     private ObservableList<MiembroMer> fetchData() {
-        //mover esta logica para evitar abrir y cerrar la conexion a la DB cada vez que se llama esta funcion
-        Connection connection = null;
         Statement statement = null;
         ObservableList<MiembroMer> data = FXCollections.observableArrayList();
         try {
-            System.out.println("Conecting to database...");
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:sample_db/chinook.db");
-
-            System.out.println("Connected successfully");
-            statement = connection.createStatement();
-
-            System.out.printf("Performing query...%n%n");
+            statement = DbUtil.getConnection().createStatement();
             String sql = "SELECT * FROM customers;";
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                MiembroMer representante = new MiembroMer();
-                representante.setIdentidad((Integer.parseInt(result.getString("CustomerId"))));
-                representante.setNombre((result.getString("FirstName")));
-                data.add(representante);
+                MiembroMer miembro = new MiembroMer();
+                miembro.setIdentidad((Integer.parseInt(result.getString("CustomerId"))));
+                miembro.setNombre((result.getString("FirstName")));
+                data.add(miembro);
             }
-            //closing connection
             result.close();
             statement.close();
-            connection.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

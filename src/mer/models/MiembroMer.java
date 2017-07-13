@@ -1,11 +1,8 @@
-package MER.models;
+package mer.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-/**
- * Created by Wilmer on 12/07/2017.
- */
 public class MiembroMer {
 
     private SimpleStringProperty nombre = new SimpleStringProperty();

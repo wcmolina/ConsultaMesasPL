@@ -1,4 +1,4 @@
-package MER.views;
+package mer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("index.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/index.fxml"));
         primaryStage.setTitle("Consulta de mesas electorales - Partido Liberal");
-        primaryStage.setScene(new Scene(root, 700, 700));
+        primaryStage.setScene(new Scene(root, 850, 650));
         //primaryStage.setResizable(false);
         primaryStage.show();
     }
