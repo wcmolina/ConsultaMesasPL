@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MER.controllers.IndexController">
+    <children>
+        <MenuBar fx:id="menuPrincipal">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="aboutMenu" mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <VBox alignment="TOP_CENTER">
+            <children>
+                <ImageView fx:id="banner" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/banner.jpg" />
+               </image>
+                </ImageView>
+            </children>
+        </VBox>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <TextField fx:id="consulta" prefHeight="35.0" prefWidth="400.0" promptText="Buscar...">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </TextField>
+                <SplitMenuButton fx:id="buscar" mnemonicParsing="false" prefHeight="35.0" text="Miembro MER">
+                    <items>
+                        <MenuItem fx:id="buscarMiembroMer" mnemonicParsing="false" text="Miembro MER" />
+                        <MenuItem fx:id="buscarMer" mnemonicParsing="false" text="MER" />
+                    </items>
+                </SplitMenuButton>
+            </children>
+        </HBox>
+        <TableView fx:id="tablaMiembrosMer" prefHeight="428.0" prefWidth="700.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colIdentidad" prefWidth="75.0" text="Identidad" />
+                <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="colDomicilio" prefWidth="75.0" text="Domicilio" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
