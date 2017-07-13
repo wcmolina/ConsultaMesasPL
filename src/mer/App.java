@@ -13,7 +13,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("views/index.fxml"));
         primaryStage.setTitle("Consulta de mesas electorales - Partido Liberal");
         primaryStage.setScene(new Scene(root, 850, 650));
-        //primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

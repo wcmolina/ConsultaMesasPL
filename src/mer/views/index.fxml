@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.IndexController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.IndexController">
     <children>
         <MenuBar fx:id="menuPrincipal">
             <menus>
@@ -31,7 +31,7 @@
         </MenuBar>
         <VBox alignment="TOP_CENTER">
             <children>
-                <ImageView fx:id="banner" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="banner" fitWidth="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/banner.jpg" />
                </image>
@@ -45,10 +45,10 @@
                         <Insets />
                     </HBox.margin>
                 </TextField>
-                <SplitMenuButton fx:id="buscar" mnemonicParsing="false" prefHeight="35.0" text="Miembro MER">
+                <SplitMenuButton fx:id="buscar" mnemonicParsing="false" prefHeight="35.0" text="Miembro MER" onAction="#performQuery">
                     <items>
-                        <MenuItem fx:id="buscarMiembroMer" mnemonicParsing="false" text="Miembro MER" />
-                        <MenuItem fx:id="buscarMer" mnemonicParsing="false" text="MER" />
+                        <MenuItem fx:id="buscarMiembroMer" mnemonicParsing="false" onAction="#changeSearchBy" text="Miembro MER" />
+                        <MenuItem fx:id="buscarMer" mnemonicParsing="false" onAction="#changeSearchBy" text="MER" />
                     </items>
                 </SplitMenuButton>
             </children>
