@@ -12,8 +12,8 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("views/index.fxml"));
         primaryStage.setTitle("Consulta de mesas electorales - Partido Liberal");
-        primaryStage.setScene(new Scene(root, 850, 650));
-        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root, 850, 700));
+        primaryStage.setMinWidth(850);
         primaryStage.show();
     }
 

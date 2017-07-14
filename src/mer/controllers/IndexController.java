@@ -29,6 +29,19 @@ public class IndexController {
         //especificar como debe llenarse cada TableColumn a partir de una propiedad de un POJO (Plain Old Java Object)
         colIdentidad.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("identidad"));
         colNombre.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("nombre"));
+        colDomicilio.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("direccion"));
+        //agregar on mouse clicked event to each row in the TableView
+        tablaMiembrosMer.setRowFactory(tableView -> {
+            TableRow<MiembroMer> row = new TableRow();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    MiembroMer rowData = row.getItem();
+                    //works, but how?
+                    System.out.println(rowData.getNombre());
+                }
+            });
+            return row ;
+        });
     }
 
     @FXML
@@ -44,13 +57,14 @@ public class IndexController {
         if (!search.isEmpty()) {
             PreparedStatement preparedStatement = null;
             try {
-                preparedStatement = connection.prepareStatement("SELECT * FROM customers WHERE FirstName = ? COLLATE NOCASE");
-                preparedStatement.setString(1, search);
+                preparedStatement = connection.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ? COLLATE NOCASE");
+                preparedStatement.setString(1, "%"+search+"%");
                 ResultSet result = preparedStatement.executeQuery();
                 while (result.next()) {
                     MiembroMer miembro = new MiembroMer();
                     miembro.setIdentidad((Integer.parseInt(result.getString("CustomerId"))));
                     miembro.setNombre((result.getString("FirstName")));
+                    miembro.setDireccion(result.getString("Address"));
                     data.add(miembro);
                 }
                 result.close();
