@@ -40,12 +40,12 @@
         </VBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <TextField fx:id="consulta" prefHeight="35.0" prefWidth="400.0" promptText="Buscar...">
+                <TextField fx:id="consulta" onAction="#performQuery" prefHeight="35.0" prefWidth="400.0" promptText="Buscar...">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
                 </TextField>
-                <SplitMenuButton fx:id="buscar" mnemonicParsing="false" prefHeight="35.0" text="Miembro MER" onAction="#performQuery">
+                <SplitMenuButton fx:id="buscar" mnemonicParsing="false" onAction="#performQuery" prefHeight="35.0" text="Miembro MER">
                     <items>
                         <MenuItem fx:id="buscarMiembroMer" mnemonicParsing="false" onAction="#changeSearchBy" text="Miembro MER" />
                         <MenuItem fx:id="buscarMer" mnemonicParsing="false" onAction="#changeSearchBy" text="MER" />
@@ -53,7 +53,7 @@
                 </SplitMenuButton>
             </children>
         </HBox>
-        <TableView fx:id="tablaMiembrosMer" prefHeight="428.0" prefWidth="700.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tablaMiembrosMer" prefHeight="430.0" prefWidth="850.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="colIdentidad" prefWidth="75.0" text="Identidad" />
                 <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
