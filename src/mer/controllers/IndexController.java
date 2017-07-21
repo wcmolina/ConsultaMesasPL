@@ -1,7 +1,10 @@
 package mer.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import mer.models.MiembroMer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,7 +32,7 @@ public class IndexController {
         //especificar como debe llenarse cada TableColumn a partir de una propiedad de un POJO (Plain Old Java Object)
         colIdentidad.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("identidad"));
         colNombre.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("nombre"));
-        colDomicilio.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("direccion"));
+        //colDomicilio.setCellValueFactory(new PropertyValueFactory<MiembroMer, String>("direccion"));
         //agregar on mouse clicked event to each row in the TableView
         tablaMiembrosMer.setRowFactory(tableView -> {
             TableRow<MiembroMer> row = new TableRow();
@@ -42,6 +45,9 @@ public class IndexController {
             });
             return row ;
         });
+
+        //focus on results table
+        Platform.runLater( () -> tablaMiembrosMer.requestFocus() );
     }
 
     @FXML
@@ -57,14 +63,14 @@ public class IndexController {
         if (!search.isEmpty()) {
             PreparedStatement preparedStatement = null;
             try {
-                preparedStatement = connection.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ? COLLATE NOCASE");
-                preparedStatement.setString(1, "%"+search+"%");
+                preparedStatement = connection.prepareStatement("SELECT * FROM Municipios WHERE nombre LIKE ? OR nombreAscii LIKE ?");
+                preparedStatement.setString(1, "%"+search.toUpperCase()+"%");
+                preparedStatement.setString(2, "%"+search.toUpperCase()+"%");
                 ResultSet result = preparedStatement.executeQuery();
                 while (result.next()) {
                     MiembroMer miembro = new MiembroMer();
-                    miembro.setIdentidad((Integer.parseInt(result.getString("CustomerId"))));
-                    miembro.setNombre((result.getString("FirstName")));
-                    miembro.setDireccion(result.getString("Address"));
+                    miembro.setIdentidad((Integer.parseInt(result.getString("municipioId"))));
+                    miembro.setNombre((result.getString("nombre")));
                     data.add(miembro);
                 }
                 result.close();

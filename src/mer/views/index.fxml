@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Label?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.IndexController">
     <children>
         <MenuBar fx:id="menuPrincipal">
@@ -54,6 +55,9 @@
             </children>
         </HBox>
         <TableView fx:id="tablaMiembrosMer" prefHeight="430.0" prefWidth="850.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+            <placeholder>
+                <Label text=""/>
+            </placeholder>
             <columns>
                 <TableColumn fx:id="colIdentidad" prefWidth="75.0" text="Identidad" />
                 <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
