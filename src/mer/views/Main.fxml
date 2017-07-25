@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.MasterDetailPane?>
+
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.MainController">
+   <children>
+       <fx:include fx:id="menu" source="Menu.fxml" />
+      <AnchorPane>
+         <children>
+             <MasterDetailPane fx:id="masterDetailPane" detailSide="BOTTOM" dividerPosition="0.6" prefHeight="650.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                 <masterNode>
+                     <fx:include fx:id="table" source="MasterTable.fxml" />
+                 </masterNode>
+             </MasterDetailPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
