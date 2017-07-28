@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 public class MasterTableController {
     @FXML private TableView miembros;
@@ -37,10 +38,11 @@ public class MasterTableController {
         colMer.prefWidthProperty().bind(miembros.widthProperty().multiply(0.20));
 
         //cell value factories
-        colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-        //colApellido.setCellValueFactory(new PropertyValueFactory("primerApellido"));
-        colIdentidad.setCellValueFactory(new PropertyValueFactory("identidad"));
-        //colIdentidad.setCellValueFactory(new PropertyValueFactory("domicilio"));
+        colNombre.setCellValueFactory(new PropertyValueFactory("primerNombre"));
+        colApellido.setCellValueFactory(new PropertyValueFactory("primerApellido"));
+        colIdentidad.setCellValueFactory(new PropertyValueFactory("numeroIdentidad"));
+        colDomicilio.setCellValueFactory(new PropertyValueFactory("direccion"));
+        colMer.setCellValueFactory(new PropertyValueFactory("numeroMesa"));
 
         //double-click event to each row
         //agregar on mouse clicked event to each row in the TableView
@@ -50,7 +52,7 @@ public class MasterTableController {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     MiembroMer rowData = row.getItem();
                     //works, but how?
-                    System.out.println(rowData.getNombre());
+                    System.out.println(rowData.getPrimerNombre());
                 }
             });
             return row ;
@@ -62,17 +64,35 @@ public class MasterTableController {
     }
 
     public void performQuery(String query) {
+        //move this logic to a Data Acces Object (dao)
+        //MiembroMerDataAccess.all()
+        //MiembroMerDataAccess.find(nombre o identidad)
         ObservableList<MiembroMer> data = FXCollections.observableArrayList();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM Municipios WHERE nombre LIKE ? OR nombreAscii LIKE ?");
+            preparedStatement = connection.prepareStatement("" +
+                    "SELECT miembros.*, lugares.nombre, mesas.numero " +
+                    "FROM MiembrosMer miembros " +
+                    "INNER JOIN LugaresPoblados lugares " +
+                    "    ON miembros.lugarPobladoId = lugares.lugarPobladoId " +
+                    "LEFT JOIN MesasElectorales mesas " +
+                    "    ON miembros.mesaElectoralId = mesas.mesaElectoralId " +
+                    "WHERE primerNombre || ' ' || primerApellido LIKE ? " +
+                    "    OR miembros.numeroIdentidad = ?");
             preparedStatement.setString(1, "%"+query.toUpperCase()+"%");
             preparedStatement.setString(2, "%"+query.toUpperCase()+"%");
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 MiembroMer miembro = new MiembroMer();
-                miembro.setIdentidad((Integer.parseInt(result.getString("municipioId"))));
-                miembro.setNombre((result.getString("nombre")));
+                miembro.setId(Integer.parseInt(result.getString("miembroMerId")));
+                miembro.setPrimerNombre((result.getString("primerNombre")));
+                miembro.setSegundoNombre((result.getString("segundoNombre")));
+                miembro.setPrimerApellido((result.getString("primerApellido")));
+                miembro.setSegundoApellido((result.getString("segundoApellido")));
+                miembro.setNumeroIdentidad(result.getString("numeroIdentidad"));
+                miembro.setFechaNacimiento(new SimpleDateFormat(result.getString("fechaNacimiento")));
+                miembro.setDireccion(result.getString("nombre"));
+                miembro.setNumeroMesa(result.getString("numero"));
                 data.add(miembro);
             }
             result.close();

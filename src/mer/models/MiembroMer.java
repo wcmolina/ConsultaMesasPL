@@ -3,26 +3,74 @@ package mer.models;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.text.SimpleDateFormat;
+
 public class MiembroMer {
 
-    private SimpleStringProperty nombre = new SimpleStringProperty();
-    private SimpleIntegerProperty identidad = new SimpleIntegerProperty();
+    private SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private SimpleStringProperty primerNombre = new SimpleStringProperty();
+    private SimpleStringProperty segundoNombre = new SimpleStringProperty();
+    private SimpleStringProperty primerApellido = new SimpleStringProperty();
+    private SimpleStringProperty segundoApellido = new SimpleStringProperty();
+    private SimpleStringProperty numeroIdentidad = new SimpleStringProperty();
+    private SimpleDateFormat fechaNacimiento = new SimpleDateFormat();
     private SimpleStringProperty direccion = new SimpleStringProperty();
+    private SimpleStringProperty numeroMesa = new SimpleStringProperty();
 
-    public String getNombre() {
-        return nombre.get();
+    public int getId() {
+        return id.get();
     }
 
-    public int getIdentidad() {
-        return identidad.get();
+    public void setId(int id) {
+        this.id.set(id);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre.set(nombre);
+    public String getPrimerNombre() {
+        return primerNombre.get();
     }
 
-    public void setIdentidad(int identidad) {
-        this.identidad.set(identidad);
+    public void setPrimerNombre(String primerNombre) {
+        this.primerNombre.set(primerNombre);
+    }
+
+    public String getSegundoNombre() {
+        return segundoNombre.get();
+    }
+
+    public void setSegundoNombre(String segundoNombre) {
+        this.segundoNombre.set(segundoNombre);
+    }
+
+    public String getPrimerApellido() {
+        return primerApellido.get();
+    }
+
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido.set(primerApellido);
+    }
+
+    public String getSegundoApellido() {
+        return segundoApellido.get();
+    }
+
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido.set(segundoApellido);
+    }
+
+    public String getNumeroIdentidad() {
+        return numeroIdentidad.get();
+    }
+
+    public void setNumeroIdentidad(String numeroIdentidad) {
+        this.numeroIdentidad.set(numeroIdentidad);
+    }
+
+    public SimpleDateFormat getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(SimpleDateFormat fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getDireccion() {
@@ -31,5 +79,13 @@ public class MiembroMer {
 
     public void setDireccion(String direccion) {
         this.direccion.set(direccion);
+    }
+
+    public String getNumeroMesa() {
+        return numeroMesa.get();
+    }
+
+    public void setNumeroMesa(String numeroMesa) {
+        this.numeroMesa.set((numeroMesa == null) ? "-" : numeroMesa);
     }
 }
