@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="miembros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/8.0.111" fx:controller="mer.controllers.MembersController">
+    <columns>
+        <TableColumn fx:id="colNombre" text="Nombre"/>
+        <TableColumn fx:id="colApellido" text="Apellido"/>
+        <TableColumn fx:id="colIdentidad" text="Numero identidad"/>
+        <TableColumn fx:id="colDomicilio" text="Domicilio"/>
+        <TableColumn fx:id="colMer" text="MER"/>
+    </columns>
+</TableView>

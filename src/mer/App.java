@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
@@ -16,6 +17,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import org.controlsfx.control.MasterDetailPane;
 
 import java.io.IOException;
 
@@ -55,10 +57,13 @@ public class App extends Application {
         Stage stage = new Stage();
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("views/Main.fxml"));
+            root = FXMLLoader.load(getClass().getResource("views/Application.fxml"));
+            //MasterDetailPane lookup = (MasterDetailPane) root.lookup("#masterDetail");
+            //lookup.setMasterNode(FXMLLoader.load(getClass().getResource("views/Members.fxml")));
+            //System.out.println("Node lookup: "+lookup);
             stage.setTitle("Consulta de mesas electorales - Partido Liberal");
             stage.setScene(new Scene(root, 950, 650));
-            stage.setResizable(false);
+            //stage.setResizable(false);
             stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {

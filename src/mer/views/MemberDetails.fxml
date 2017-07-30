@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="mer.controllers.MemberDetailsController">
+    <children>
+        <VBox layoutX="48.0" layoutY="34.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label prefWidth="100.0" text="Nombre completo" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="nombreCompleto" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="30.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Número de identidad" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="numeroIdentidad" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="120.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Fecha de nacimiento" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="fechaNacimiento" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="84.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Domicilio" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="domicilio" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="192.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Mesa asignada" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="numeroMesa" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="246.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Centro de votación" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="centroVotacion" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="327.0">
+                    <children>
+                        <Label prefWidth="100.0" text="Ubicación" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="ubicacionCentro" editable="false" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

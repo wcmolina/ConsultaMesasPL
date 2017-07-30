@@ -14,7 +14,7 @@ public class QueryController {
     public SplitMenuButton search;
     public MenuItem searchMiembros;
     public MenuItem searchMer;
-    public MasterTableController tableController;
+    public MembersController tableController;
 
     public void initialize() {
         System.out.println("Init query");
@@ -22,7 +22,7 @@ public class QueryController {
         Platform.runLater( () -> search.requestFocus() );
     }
 
-    public void setTableController(MasterTableController controller) {
+    public void setTableController(MembersController controller) {
         tableController = controller;
     }
 

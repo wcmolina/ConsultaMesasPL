@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class MenuController {
 
-    public MainController mainController;
+    public ApplicationController applicationController;
     public Stage queryStage;
     public QueryController queryController;
 
@@ -16,8 +16,8 @@ public class MenuController {
         System.out.println("Init menu");
     }
 
-    public void setMainController(MainController controller) {
-        mainController = controller;
+    public void setApplicationController(ApplicationController controller) {
+        applicationController = controller;
     }
 
     public void showQueryStage() {
@@ -28,7 +28,7 @@ public class MenuController {
                 queryStage.setScene(new Scene(loader.load()));
                 queryController = loader.getController();
                 queryController.setStage(queryStage);
-                queryController.setTableController(mainController.tableController);
+                queryController.setTableController(applicationController.membersController);
                 queryStage.sizeToScene();
                 queryStage.setResizable(false);
                 queryStage.show();

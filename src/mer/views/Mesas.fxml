@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="mer.controllers.MesasController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets top="20.0"/>
+            </padding>
+            <children>
+                <Label text="Buscar MER">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="CENTER">
+                    <VBox.margin>
+                        <Insets left="20.0" right="20.0"/>
+                    </VBox.margin>
+                    <children>
+                        <TextField fx:id="merQueryInput" prefHeight="28.0" prefWidth="250.0"
+                                   promptText="Ingrese número de mesa, centro de votación, o lugar"
+                                   HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="merSearch" mnemonicParsing="false" text="Buscar">
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView fx:id="mesas" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="Municipio"/>
+                        <TableColumn prefWidth="75.0" text="Barrio/Colonia"/>
+                        <TableColumn prefWidth="75.0" text="Centro de votación"/>
+                        <TableColumn prefWidth="75.0" text="Número de mesa"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

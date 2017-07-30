@@ -6,19 +6,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import mer.models.MiembroMer;
+import mer.models.MiembroMesaElectoral;
 import mer.dao.MiembroMerDataAccess;
 
-public class MasterTableController {
+public class MembersController {
     @FXML private TableView miembros;
     private MiembroMerDataAccess miembroData;
-    public MainController mainController;
+    public ApplicationController applicationController;
 
 
     @FXML
     public void initialize() {
+        System.out.println("Init members");
         miembroData = new MiembroMerDataAccess();
-        //must be in order of column appereance
+        //must be in order of column appearance
         final String[] MIEMBRO_MER_PROPERTIES = {"primerNombre", "primerApellido", "numeroIdentidad", "direccion", "numeroMesa"};
         ObservableList<TableColumn> columns = miembros.getColumns();
 
@@ -29,11 +30,11 @@ public class MasterTableController {
 
         //double-click event to each row
         miembros.setRowFactory(tableView -> {
-            TableRow<MiembroMer> row = new TableRow();
+            TableRow<MiembroMesaElectoral> row = new TableRow();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    MiembroMer rowData = row.getItem();
-                    //works, but how?
+                    MiembroMesaElectoral rowData = row.getItem();
+                    //
                     System.out.println(rowData.getPrimerNombre());
                 }
             });
@@ -41,8 +42,8 @@ public class MasterTableController {
         });
     }
 
-    public void setMainController(MainController controller) {
-        mainController = controller;
+    public void setApplicationController(ApplicationController controller) {
+        applicationController = controller;
     }
 
     public void performQuery(String query) {

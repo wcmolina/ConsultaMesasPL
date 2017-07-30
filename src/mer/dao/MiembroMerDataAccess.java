@@ -2,7 +2,7 @@ package mer.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import mer.models.MiembroMer;
+import mer.models.MiembroMesaElectoral;
 import mer.util.DbUtil;
 
 import java.sql.Connection;
@@ -14,14 +14,14 @@ import java.text.SimpleDateFormat;
 public class MiembroMerDataAccess {
 
     private final Connection connection;
-    private ObservableList<MiembroMer> data;
+    private ObservableList<MiembroMesaElectoral> data;
     private PreparedStatement statement;
 
     public MiembroMerDataAccess() {
         connection = DbUtil.getConnection();
     }
 
-    public ObservableList<MiembroMer> findAll(String query) {
+    public ObservableList<MiembroMesaElectoral> findAll(String query) {
         data = FXCollections.observableArrayList();
         try {
             statement = connection.prepareStatement("" +
@@ -41,7 +41,7 @@ public class MiembroMerDataAccess {
         return data;
     }
 
-    public ObservableList<MiembroMer> find(int id) {
+    public ObservableList<MiembroMesaElectoral> find(int id) {
         data = FXCollections.observableArrayList();
         try {
             statement = connection.prepareStatement("" +
@@ -62,7 +62,7 @@ public class MiembroMerDataAccess {
 
     public void fetchRowData(ResultSet result) throws SQLException {
         while (result.next()) {
-            MiembroMer miembro = new MiembroMer();
+            MiembroMesaElectoral miembro = new MiembroMesaElectoral();
             miembro.setId(Integer.parseInt(result.getString("miembroMerId")));
             miembro.setPrimerNombre((result.getString("primerNombre")));
             miembro.setSegundoNombre((result.getString("segundoNombre")));

@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.text.SimpleDateFormat;
 
-public class MiembroMer {
+public class MiembroMesaElectoral {
 
     private SimpleIntegerProperty id = new SimpleIntegerProperty();
     private SimpleStringProperty primerNombre = new SimpleStringProperty();

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.MasterDetailPane?>
+<?import javafx.scene.control.SplitPane?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="mer.controllers.ApplicationController">
+    <children>
+        <fx:include fx:id="menu" source="Menu.fxml"/>
+        <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <MasterDetailPane fx:id="masterDetail" detailSide="BOTTOM" dividerPosition="0.4" prefHeight="680.0" prefWidth="950.0"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                  AnchorPane.topAnchor="0.0">
+                    <masterNode>
+                        <fx:include fx:id="members" source="Members.fxml"/>
+                    </masterNode>
+                    <detailNode>
+                        <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111"
+                                    xmlns:fx="http://javafx.com/fxml/1">
+                            <children>
+                                <SplitPane dividerPositions="0.4" prefHeight="160.0" prefWidth="200.0"
+                                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <items>
+                                        <fx:include fx:id="memberDetails" source="MemberDetails.fxml"></fx:include>
+                                        <fx:include fx:id="mesas" source="Mesas.fxml"></fx:include>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </detailNode>
+                </MasterDetailPane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
