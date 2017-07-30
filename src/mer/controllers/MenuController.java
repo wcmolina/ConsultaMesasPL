@@ -1,8 +1,13 @@
 package mer.controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -31,7 +36,8 @@ public class MenuController {
                 queryController.setTableController(applicationController.membersController);
                 queryStage.sizeToScene();
                 queryStage.setResizable(false);
-                queryStage.show();
+                queryStage.initModality(Modality.APPLICATION_MODAL);
+                queryStage.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();
             }
