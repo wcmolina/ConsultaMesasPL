@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.ElectoralTablesController">
+    <children>
+        <ToolBar>
+            <items>
+                <TextField fx:id="electoralTableQuery" prefHeight="30.0" prefWidth="300.0" promptText="Número de mesa, centro de votación, etc" />
+                <ComboBox fx:id="electoralTableDepartment" prefHeight="25.0" prefWidth="122.0" promptText="Departamento" />
+                <ComboBox fx:id="filterElectoralTablesBy" prefHeight="25.0" prefWidth="122.0" promptText="Filtrar por..." />
+                <Button mnemonicParsing="false" text="Buscar mesa" />
+            </items>
+        </ToolBar>
+        <TableView fx:id="electoralTables" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn prefWidth="75.0" text="Departamento" />
+                <TableColumn prefWidth="75.0" text="Municipio" />
+                <TableColumn prefWidth="75.0" text="Sector electoral" />
+                <TableColumn prefWidth="75.0" text="Centro de votación" />
+                <TableColumn prefWidth="75.0" text="Numero mesa" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

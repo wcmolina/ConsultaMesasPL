@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.text.SimpleDateFormat;
 
-public class MiembroMesaElectoral {
+public class Citizen {
 
     private SimpleIntegerProperty id = new SimpleIntegerProperty();
     private SimpleStringProperty primerNombre = new SimpleStringProperty();
@@ -16,6 +16,7 @@ public class MiembroMesaElectoral {
     private SimpleDateFormat fechaNacimiento = new SimpleDateFormat();
     private SimpleStringProperty direccion = new SimpleStringProperty();
     private SimpleStringProperty numeroMesa = new SimpleStringProperty();
+    public static final String[] TABLE_COLUMNS = {"primerNombre", "primerApellido", "numeroIdentidad", "direccion", "numeroMesa"};
 
     public int getId() {
         return id.get();

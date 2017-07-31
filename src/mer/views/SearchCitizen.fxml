@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.CitizensController">
+    <children>
+        <ToolBar>
+            <items>
+                <TextField fx:id="citizenQuery" prefHeight="30.0" prefWidth="300.0" promptText="Número de identidad, nombre, domicilio, etc" onAction="#performQuery"/>
+                <ComboBox fx:id="filterCitizensBy" prefHeight="25.0" prefWidth="122.0" promptText="Filtrar por..." />
+                <Button fx:id="searchCitizen" mnemonicParsing="false" text="Buscar ciudadano" onAction="#performQuery" />
+            </items>
+        </ToolBar>
+        <TableView fx:id="citizens" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn text="Nombre" />
+                <TableColumn text="Apellido" />
+                <TableColumn text="Número de identidad" />
+                <TableColumn text="Domicilio" />
+                <TableColumn text="Asignado a MER" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
