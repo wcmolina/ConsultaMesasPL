@@ -1,10 +1,16 @@
 package mer.controllers;
 
-import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import org.controlsfx.control.MasterDetailPane;
 
 public class ElectoralTablesController {
-    @FXML public TableView electoralTables;
+    public TableView electoralTables;
+    public MasterDetailPane masterDetail;
+    public TextField electoralTableQuery;
+    public ComboBox electoralTableDepartment;
+    public ComboBox filterElectoralTablesBy;
 
     public void initialize() {
         System.out.println("Init tables");

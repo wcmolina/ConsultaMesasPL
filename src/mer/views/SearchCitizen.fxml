@@ -8,24 +8,36 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.MasterDetailPane?>
 
-<VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.CitizensController">
-    <children>
-        <ToolBar>
-            <items>
-                <TextField fx:id="citizenQuery" prefHeight="30.0" prefWidth="300.0" promptText="Número de identidad, nombre, domicilio, etc" onAction="#performQuery"/>
-                <ComboBox fx:id="filterCitizensBy" prefHeight="25.0" prefWidth="122.0" promptText="Filtrar por..." />
-                <Button fx:id="searchCitizen" mnemonicParsing="false" text="Buscar ciudadano" onAction="#performQuery" />
-            </items>
-        </ToolBar>
-        <TableView fx:id="citizens" VBox.vgrow="ALWAYS">
-            <columns>
-                <TableColumn text="Nombre" />
-                <TableColumn text="Apellido" />
-                <TableColumn text="Número de identidad" />
-                <TableColumn text="Domicilio" />
-                <TableColumn text="Asignado a MER" />
-            </columns>
-        </TableView>
-    </children>
-</VBox>
+<MasterDetailPane fx:id="masterDetail" detailSide="BOTTOM" prefHeight="680.0" prefWidth="950.0" dividerPosition="0.7"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111"
+                  xmlns:fx="http://javafx.com/fxml/1"
+                  fx:controller="mer.controllers.CitizensController">
+    <masterNode>
+        <VBox>
+            <ToolBar>
+                <TextField fx:id="citizenQuery" prefHeight="30.0" prefWidth="300.0"
+                           promptText="Número de identidad, nombre, domicilio, etc"
+                           onAction="#performQuery"/>
+                <ComboBox fx:id="filterCitizensBy" prefHeight="25.0" prefWidth="122.0"
+                          promptText="Filtrar por..."/>
+                <Button fx:id="searchCitizen" mnemonicParsing="false" text="Buscar ciudadano"
+                        onAction="#performQuery"/>
+            </ToolBar>
+            <TableView fx:id="citizens" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="Nombre"/>
+                    <TableColumn text="Apellido"/>
+                    <TableColumn text="Número de identidad"/>
+                    <TableColumn text="Domicilio"/>
+                    <TableColumn text="Asignado a MER"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </masterNode>
+    <detailNode>
+        <fx:include fx:id="citizenDetails" source="CitizenDetails.fxml"/>
+    </detailNode>
+</MasterDetailPane>
