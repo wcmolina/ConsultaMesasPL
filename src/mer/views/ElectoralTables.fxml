@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.MasterDetailPane?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <MasterDetailPane fx:id="masterDetail" detailSide="BOTTOM" prefHeight="680.0" prefWidth="950.0" dividerPosition="0.7"
                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111"
@@ -18,12 +20,43 @@
     <masterNode>
         <VBox>
             <ToolBar>
-                <TextField fx:id="electoralTableQuery" prefHeight="30.0" prefWidth="300.0"
+                <TextField fx:id="electoralTableQuery" prefHeight="30.0" prefWidth="350.0"
                            promptText="Número de mesa, centro de votación, etc"/>
-                <ComboBox fx:id="electoralTableDepartment" prefHeight="25.0" prefWidth="122.0"
-                          promptText="Departamento"/>
-                <ComboBox fx:id="filterElectoralTablesBy" prefHeight="25.0" prefWidth="122.0"
-                          promptText="Filtrar por..."/>
+                <ComboBox fx:id="electoralTableDepartment"
+                          promptText="Departamento">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Atlántida"/>
+                            <String fx:value="Choluteca"/>
+                            <String fx:value="Colón"/>
+                            <String fx:value="Comayagua"/>
+                            <String fx:value="Copán"/>
+                            <String fx:value="Cortés"/>
+                            <String fx:value="El Paraíso"/>
+                            <String fx:value="Francisco Morazán"/>
+                            <String fx:value="Gracias a Dios"/>
+                            <String fx:value="Intibucá"/>
+                            <String fx:value="Islas de la Bahía"/>
+                            <String fx:value="La Paz"/>
+                            <String fx:value="Lempira"/>
+                            <String fx:value="Ocotepeque"/>
+                            <String fx:value="Olancho"/>
+                            <String fx:value="Santa Bárbara"/>
+                            <String fx:value="Valle"/>
+                            <String fx:value="Yoro"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <ComboBox fx:id="filterElectoralTablesBy"
+                          promptText="Filtrar por...">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Mesas llenas"/>
+                            <String fx:value="Mesas vacías"/>
+                            <String fx:value="Sin filtro"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
                 <Button mnemonicParsing="false" text="Buscar mesa"/>
             </ToolBar>
             <TableView fx:id="electoralTables" VBox.vgrow="ALWAYS">

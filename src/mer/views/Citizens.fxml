@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.MasterDetailPane?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <MasterDetailPane fx:id="masterDetail" detailSide="BOTTOM" prefHeight="680.0" prefWidth="950.0" dividerPosition="0.7"
                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111"
@@ -21,8 +23,16 @@
                 <TextField fx:id="citizenQuery" prefHeight="30.0" prefWidth="300.0"
                            promptText="Número de identidad, nombre, domicilio, etc"
                            onAction="#performQuery"/>
-                <ComboBox fx:id="filterCitizensBy" prefHeight="25.0" prefWidth="122.0"
-                          promptText="Filtrar por..."/>
+                <ComboBox fx:id="filterCitizensBy"
+                          promptText="Filtrar por...">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Ciudadanos con mesa"/>
+                            <String fx:value="Ciudadanos sin mesa"/>
+                            <String fx:value="Sin filtro"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
                 <Button fx:id="searchCitizen" mnemonicParsing="false" text="Buscar ciudadano"
                         onAction="#performQuery"/>
             </ToolBar>
