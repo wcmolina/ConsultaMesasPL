@@ -33,4 +33,10 @@ public class CitizenDetailsController {
 
         //una vez actualizada la base de datos, que pasa con la instancia que se creo a partir del registro ahora desactualizado?
     }
+
+    public void clearTextFields() {
+        nombreCompleto.setText("");
+        numeroMesa.setText("");
+        fechaNacimiento.setText("");
+    }
 }

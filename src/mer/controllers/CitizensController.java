@@ -38,6 +38,7 @@ public class CitizensController {
     public void performQuery() {
         if (!citizenQuery.getText().isEmpty()) {
             citizens.setItems(citizenDataAccess.findAll(citizenQuery.getText()));
+            citizenDetailsController.clearTextFields();
         }
     }
 }
