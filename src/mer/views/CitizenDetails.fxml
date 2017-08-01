@@ -63,7 +63,7 @@
                 <Insets right="10.0"/>
             </HBox.margin>
         </Button>
-        <Button fx:id="updateTable" mnemonicParsing="false" text="Cambiar mesa">
+        <Button fx:id="updateTable" mnemonicParsing="false" text="Asignar mesa">
             <HBox.margin>
                 <Insets right="10.0"/>
             </HBox.margin>
