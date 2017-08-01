@@ -56,6 +56,7 @@ public class App extends Application {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("views/Application.fxml"));
+            root.getStylesheets().add("/mer/views/assets/styles.css");
             stage.setTitle("Consulta de mesas electorales - Partido Liberal de Honduras");
             stage.setScene(new Scene(root, 950, 650));
             stage.centerOnScreen();

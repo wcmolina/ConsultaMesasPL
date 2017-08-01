@@ -1,0 +1,31 @@
+.button {
+    -fx-cursor: hand;
+}
+
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-border: none;
+    -fx-background-radius: 0px;
+    -fx-padding: 15px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.sidebar-btn:hover,
+.sidebar-btn:selected {
+    -fx-background-color: lightgrey;
+}
+
+.main-btn {
+    -fx-text-fill: white;
+    -fx-background-color: #D14841;
+    -fx-border: none;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.table-view {
+    -fx-selection-bar: #D14841;
+    -fx-selection-bar-non-focused: salmon;
+}

@@ -12,6 +12,7 @@
 
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.control.Label?>
 <MasterDetailPane fx:id="masterDetail" detailSide="BOTTOM" prefHeight="680.0" prefWidth="950.0" dividerPosition="0.7"
                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111"
@@ -48,7 +49,7 @@
                     </items>
                 </ComboBox>
                 <ComboBox fx:id="filterElectoralTablesBy"
-                          promptText="Filtrar por...">
+                          promptText="Filtrar...">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Mesas llenas"/>
@@ -57,7 +58,7 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-                <Button mnemonicParsing="false" text="Buscar mesa"/>
+                <Button mnemonicParsing="false" text="Buscar" styleClass="main-btn"/>
             </ToolBar>
             <TableView fx:id="electoralTables" VBox.vgrow="ALWAYS">
                 <columns>
@@ -67,10 +68,16 @@
                     <TableColumn prefWidth="75.0" text="Centro de votación"/>
                     <TableColumn prefWidth="75.0" text="Numero mesa"/>
                 </columns>
+                <placeholder>
+                    <Label text="Los resultados de su búsqueda se mostrarán aquí"/>
+                </placeholder>
             </TableView>
         </VBox>
     </masterNode>
     <detailNode>
         <!--<fx:include fx:id="tableDetails" source="TableDetails.fxml"/>-->
+        <AnchorPane>
+
+        </AnchorPane>
     </detailNode>
 </MasterDetailPane>

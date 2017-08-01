@@ -2,11 +2,14 @@ package mer.controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class ApplicationController {
     public AnchorPane mainContent;
+    public Button findByTables;
+    public Button findByCitizens;
     private Node electoralTablesRootNode;
     private Node citizensRootNode;
 
@@ -23,10 +26,14 @@ public class ApplicationController {
     }
 
     public void changeToTableView() {
+        findByTables.setStyle("-fx-background-color: lightgrey;");
+        findByCitizens.setStyle("-fx-background-color: transparent;");
         mainContent.getChildren().setAll(electoralTablesRootNode);
     }
 
     public void changeToCitizenView() {
+        findByCitizens.setStyle("-fx-background-color: lightgrey;");
+        findByTables.setStyle("-fx-background-color: transparent;");
         mainContent.getChildren().setAll(citizensRootNode);
     }
 }
