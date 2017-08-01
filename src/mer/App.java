@@ -56,9 +56,6 @@ public class App extends Application {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("views/Application.fxml"));
-            //MasterDetailPane lookup = (MasterDetailPane) root.lookup("#masterDetail");
-            //lookup.setMasterNode(FXMLLoader.load(getClass().getResource("views/Members.fxml")));
-            //System.out.println("Node lookup: "+lookup);
             stage.setTitle("Consulta de mesas electorales - Partido Liberal de Honduras");
             stage.setScene(new Scene(root, 950, 650));
             stage.centerOnScreen();

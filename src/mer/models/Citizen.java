@@ -87,7 +87,7 @@ public class Citizen {
     }
 
     public void setNumeroMesa(String numeroMesa) {
-        this.numeroMesa.set((numeroMesa == null) ? "-" : numeroMesa);
+        this.numeroMesa.set(numeroMesa);
     }
 
     public String getNombreCompleto() {

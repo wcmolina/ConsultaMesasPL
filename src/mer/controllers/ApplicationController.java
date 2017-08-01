@@ -13,8 +13,8 @@ public class ApplicationController {
     public void initialize() {
         System.out.println("Init application");
         try {
-            electoralTablesRootNode = FXMLLoader.load(getClass().getResource("/mer/views/SearchElectoralTable.fxml"));
-            citizensRootNode = FXMLLoader.load(getClass().getResource("/mer/views/SearchCitizen.fxml"));
+            electoralTablesRootNode = FXMLLoader.load(getClass().getResource("/mer/views/ElectoralTables.fxml"));
+            citizensRootNode = FXMLLoader.load(getClass().getResource("/mer/views/Citizens.fxml"));
             //Default main content: search by electoral tables
             changeToTableView();
         } catch (IOException e) {
