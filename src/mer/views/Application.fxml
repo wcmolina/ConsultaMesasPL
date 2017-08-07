@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="mer.controllers.ApplicationController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mer.controllers.ApplicationController">
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
           AnchorPane.topAnchor="0.0">
         <HBox VBox.vgrow="ALWAYS">
-            <VBox>
-                <Button fx:id="findByTables" minWidth="200.0" mnemonicParsing="false" onAction="#changeToTableView"
-                        text="Mesas electorales" styleClass="sidebar-btn" alignment="CENTER_LEFT"/>
-                <Button fx:id="findByCitizens" minWidth="200.0" mnemonicParsing="false" onAction="#changeToCitizenView"
-                        text="Miembros MER" styleClass="sidebar-btn" alignment="CENTER_LEFT"/>
+            <VBox styleClass="sidebar">
+                <Button fx:id="findByTables" alignment="TOP_LEFT" minWidth="150.0" mnemonicParsing="false"
+                        onAction="#changeToTableView" styleClass="sidebar-btn" text="Mesas electorales"/>
+                <Button fx:id="findByCitizens" alignment="TOP_LEFT" minWidth="150.0" mnemonicParsing="false"
+                        onAction="#changeToCitizenView" styleClass="sidebar-btn" text="Miembros MER"/>
             </VBox>
             <AnchorPane fx:id="mainContent" HBox.hgrow="ALWAYS"/>
         </HBox>

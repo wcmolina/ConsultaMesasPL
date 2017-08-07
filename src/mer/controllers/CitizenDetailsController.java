@@ -1,13 +1,13 @@
 package mer.controllers;
 
-import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import mer.models.Citizen;
 
 public class CitizenDetailsController {
-    public Button removeTable;
-    public Button updateTable;
+    public Hyperlink removeTable;
+    public Hyperlink updateTable;
+    public Hyperlink editCitizen;
     public TextField nombreCompleto;
     public TextField numeroMesa;
     public TextField fechaNacimiento;

@@ -1,19 +1,23 @@
 package mer.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import org.controlsfx.control.MasterDetailPane;
 
 public class ElectoralTablesController {
-    public TableView electoralTables;
-    public MasterDetailPane masterDetail;
-    public TextField electoralTableQuery;
-    public ComboBox electoralTableDepartment;
-    public ComboBox filterElectoralTablesBy;
+    public TableView results;
+    public ComboBox departments;
+    public ComboBox filterBy;
+    public JFXTextField queryInput;
+    public JFXButton search;
 
     public void initialize() {
         System.out.println("Init tables");
-        electoralTables.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        results.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    public void performQuery() {
+        System.out.println("Buscar mesa!");
     }
 }

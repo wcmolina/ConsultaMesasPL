@@ -16,7 +16,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
 
 public class App extends Application {
@@ -40,7 +39,7 @@ public class App extends Application {
         splashLayout.getChildren().addAll(splash);
         splashLayout.setStyle(
                 "-fx-background-color: white; " +
-                        "-fx-border-width:5; " +
+                        "-fx-border-width: 5; " +
                         "-fx-border-color: darkred"
         );
         splashLayout.setEffect(new DropShadow());
@@ -58,7 +57,7 @@ public class App extends Application {
             root = FXMLLoader.load(getClass().getResource("views/Application.fxml"));
             root.getStylesheets().add("/mer/views/assets/styles.css");
             stage.setTitle("Consulta de mesas electorales - Partido Liberal de Honduras");
-            stage.setScene(new Scene(root, 950, 650));
+            stage.setScene(new Scene(root, 1060, 660));
             stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {

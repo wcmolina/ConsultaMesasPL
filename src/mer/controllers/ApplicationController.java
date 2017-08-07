@@ -16,8 +16,14 @@ public class ApplicationController {
     public void initialize() {
         System.out.println("Init application");
         try {
-            electoralTablesRootNode = FXMLLoader.load(getClass().getResource("/mer/views/ElectoralTables.fxml"));
-            citizensRootNode = FXMLLoader.load(getClass().getResource("/mer/views/Citizens.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mer/views/Index.fxml"));
+            loader.setController(new ElectoralTablesController());
+            electoralTablesRootNode = loader.load();
+
+            loader = new FXMLLoader(getClass().getResource("/mer/views/Index.fxml"));
+            loader.setController(new CitizensController());
+            citizensRootNode = loader.load();
+
             //Default main content: search by electoral tables
             changeToTableView();
         } catch (IOException e) {
@@ -26,14 +32,10 @@ public class ApplicationController {
     }
 
     public void changeToTableView() {
-        findByTables.setStyle("-fx-background-color: lightgrey;");
-        findByCitizens.setStyle("-fx-background-color: transparent;");
         mainContent.getChildren().setAll(electoralTablesRootNode);
     }
 
     public void changeToCitizenView() {
-        findByCitizens.setStyle("-fx-background-color: lightgrey;");
-        findByTables.setStyle("-fx-background-color: transparent;");
         mainContent.getChildren().setAll(citizensRootNode);
     }
 }

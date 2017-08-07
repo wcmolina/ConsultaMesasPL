@@ -1,44 +1,61 @@
 package mer.controllers;
 
-import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 import mer.dao.CitizenDataAccess;
 import mer.models.Citizen;
-import org.controlsfx.control.MasterDetailPane;
+import java.io.IOException;
 
 public class CitizensController {
-    public MasterDetailPane masterDetail;
-    public TableView citizens;
-    public TextField citizenQuery;
-    public VBox citizenDetails;
-    public ComboBox filterCitizensBy;
-    public Button searchCitizen;
-    public CitizenDetailsController citizenDetailsController;
+    public TableView results;
+    public TextField queryInput;
+    public ComboBox departments;
+    public ComboBox filterBy;
+    public Button search;
+    public AnchorPane details;
+    public CitizenDetailsController detailsController;
     private CitizenDataAccess citizenDataAccess = new CitizenDataAccess();
 
     public void initialize() {
         System.out.println("Init citizens");
-        //Distribute column width and set cell value factories
-        ObservableList<TableColumn> columns = citizens.getColumns();
-        citizens.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        for (int i = 0; i < columns.size(); i++) {
-            columns.get(i).setCellValueFactory(new PropertyValueFactory(Citizen.TABLE_COLUMNS[i]));
+        //Set on action on query input and search button
+        queryInput.setOnAction(event -> performQuery());
+        search.setOnAction(event -> performQuery());
+
+        //Load citizen details and set controller
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mer/views/CitizenDetails.fxml"));
+        try {
+            details.getChildren().setAll((Node) loader.load());
+            detailsController = loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        citizens.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
+        //Create columns, distribute width and set cell value factories
+        for (int i = 0; i < Citizen.TABLE_COLUMNS.length; i++) {
+            TableColumn<Citizen, String> column = new TableColumn<>();
+            column.setText(Citizen.TABLE_COLUMNS[i]);
+            column.setCellValueFactory(new PropertyValueFactory(Citizen.TABLE_PROPERTIES[i]));
+            results.getColumns().add(column);
+        }
+        results.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        //On row selection, show citizen details in the bottom pane, using the citizenDetailsController
+        results.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                citizenDetailsController.displayCitizenDetails((Citizen) citizens.getSelectionModel().getSelectedItem());
+                detailsController.displayCitizenDetails((Citizen) results.getSelectionModel().getSelectedItem());
             }
         });
 
     }
 
     public void performQuery() {
-        if (!citizenQuery.getText().isEmpty()) {
-            citizens.setItems(citizenDataAccess.findAll(citizenQuery.getText()));
-            citizenDetailsController.clearTextFields();
+        if (!queryInput.getText().isEmpty()) {
+            results.setItems(citizenDataAccess.findAll(queryInput.getText().toUpperCase()));
+            detailsController.clearTextFields();
         }
     }
 }

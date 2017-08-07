@@ -1,5 +1,6 @@
 package mer.models;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -16,7 +17,8 @@ public class Citizen {
     private SimpleDateFormat fechaNacimiento = new SimpleDateFormat();
     private SimpleStringProperty direccion = new SimpleStringProperty();
     private SimpleStringProperty numeroMesa = new SimpleStringProperty();
-    public static final String[] TABLE_COLUMNS = {"primerNombre", "primerApellido", "numeroIdentidad", "direccion", "numeroMesa"};
+    public static final String[] TABLE_PROPERTIES = {"primerNombre", "primerApellido", "numeroIdentidad", "direccion", "numeroMesa"};
+    public static final String[] TABLE_COLUMNS = {"Nombre", "Apellido", "Identidad", "Dirección", "MER"};
 
     public int getId() {
         return id.get();
