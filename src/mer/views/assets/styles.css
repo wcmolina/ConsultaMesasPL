@@ -62,16 +62,6 @@
     -fx-cursor: hand;
 }
 
-.sidebar-btn:hover,
-.sidebar-btn:focused {
-    -fx-background-color: #BBBBBB;
-}
-
-.sidebar-btn:focused {
-    -fx-background-color: #BBBBBB;
-    -fx-font-weight: bold;
-}
-
 .main-btn {
     -fx-text-fill: white;
     -fx-background-color: -fx-accent;

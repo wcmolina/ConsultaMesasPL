@@ -32,10 +32,22 @@ public class ApplicationController {
     }
 
     public void changeToTableView() {
+        findByTables.setStyle("" +
+                "-fx-background-color: #BBBBBB;" +
+                "-fx-font-weight: bold;");
+        findByCitizens.setStyle("" +
+                "-fx-background-color: transparent;" +
+                "-fx-font-weight: normal;");
         mainContent.getChildren().setAll(electoralTablesRootNode);
     }
 
     public void changeToCitizenView() {
+        findByCitizens.setStyle("" +
+                "-fx-background-color: #BBBBBB;" +
+                "-fx-font-weight: bold;");
+        findByTables.setStyle("" +
+                "-fx-background-color: transparent;" +
+                "-fx-font-weight: normal;");
         mainContent.getChildren().setAll(citizensRootNode);
     }
 }
