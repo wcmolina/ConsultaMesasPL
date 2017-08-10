@@ -1,14 +1,13 @@
 package mer.controllers;
 
+import mer.dao.ElectoralTableDataAccess;
+import mer.models.ElectoralTable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import mer.dao.ElectoralTableDataAccess;
-import mer.models.ElectoralTable;
 
 public class ElectoralTablesController {
     public TableView results;

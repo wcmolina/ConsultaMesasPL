@@ -1,8 +1,8 @@
 package mer.controllers;
 
+import mer.models.Citizen;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-import mer.models.Citizen;
 
 public class CitizenDetailsController {
     public Hyperlink removeTable;

@@ -1,16 +1,18 @@
 package mer.dao;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import mer.models.ElectoralTable;
 import mer.util.DbUtil;
 import mer.util.FileUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ElectoralTableDataAccess {
     private final Connection CONNECTION;

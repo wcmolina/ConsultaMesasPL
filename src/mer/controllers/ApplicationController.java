@@ -1,10 +1,12 @@
 package mer.controllers;
 
+
+import java.io.IOException;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import java.io.IOException;
 
 public class ApplicationController {
     public AnchorPane mainContent;

@@ -1,13 +1,15 @@
 package mer.controllers;
 
+import mer.dao.CitizenDataAccess;
+import mer.models.Citizen;
+
+import java.io.IOException;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import mer.dao.CitizenDataAccess;
-import mer.models.Citizen;
-import java.io.IOException;
 
 public class CitizensController {
     public TableView results;
