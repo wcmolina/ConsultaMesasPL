@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mer.models.Citizen;
 import mer.util.DbUtil;
+import mer.util.FileUtils;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,58 +14,31 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class CitizenDataAccess {
-
-    private final Connection connection;
-    private ObservableList<Citizen> data;
-    private PreparedStatement statement;
+    private final Connection CONNECTION;
 
     public CitizenDataAccess() {
-        connection = DbUtil.getConnection();
+        CONNECTION = DbUtil.getConnection();
     }
 
-    public ObservableList<Citizen> findAll(String query) {
-        data = FXCollections.observableArrayList();
+    public ObservableList<Citizen> findAll() {
+        ObservableList<Citizen> data = null;
+        FileUtils fileUtils = new FileUtils();
         try {
-            statement = connection.prepareStatement("" +
-                    "SELECT miembro.*, lugar.nombre, mesa.numero FROM MiembrosMer miembro " +
-                    "INNER JOIN LugaresPoblados lugar ON miembro.lugarPobladoId = lugar.lugarPobladoId " +
-                    "LEFT JOIN MesasElectorales mesa ON miembro.mesaElectoralId = mesa.mesaElectoralId " +
-                    "WHERE miembro.primerNombre || ' ' || miembro.primerApellido LIKE ?" +
-                    "OR lugar.nombre LIKE ?" +
-                    "OR miembro.numeroIdentidad = ?");
-
-            statement.setString(1, "%"+query+"%");
-            statement.setString(2, "%"+query+"%");
-            statement.setString(3, query);
+            String query = fileUtils.readFileToString(new File("queries/citizens.sql"));
+            //Execute query
+            PreparedStatement statement = CONNECTION.prepareStatement(query);
             ResultSet result = statement.executeQuery();
-            fetchRowData(result);
+            data = buildResultList(result);
+            result.close();
             statement.close();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
         return data;
     }
 
-    public ObservableList<Citizen> find(int id) {
-        data = FXCollections.observableArrayList();
-        try {
-            statement = connection.prepareStatement("" +
-                    "SELECT miembro.*, lugares.nombre, mesa.numero FROM MiembrosMer miembro " +
-                    "INNER JOIN LugaresPoblados lugar ON miembro.lugarPobladoId = lugar.lugarPobladoId " +
-                    "LEFT JOIN MesasElectorales mesa ON miembro.mesaElectoralId = mesa.mesaElectoralId " +
-                    "WHERE miembro.miembroMerId = ?");
-
-            statement.setString(1, String.valueOf(id));
-            ResultSet result = statement.executeQuery();
-            fetchRowData(result);
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
-
-    public void fetchRowData(ResultSet result) throws SQLException {
+    private ObservableList<Citizen> buildResultList(ResultSet result) throws SQLException {
+        ObservableList<Citizen> resultData = FXCollections.observableArrayList();
         while (result.next()) {
             Citizen citizen = new Citizen();
             citizen.setId(Integer.parseInt(result.getString("miembroMerId")));
@@ -75,8 +50,8 @@ public class CitizenDataAccess {
             citizen.setFechaNacimiento(new SimpleDateFormat(result.getString("fechaNacimiento")));
             citizen.setDireccion(result.getString("nombre"));
             citizen.setNumeroMesa(result.getString("numero"));
-            data.add(citizen);
+            resultData.add(citizen);
         }
-        result.close();
+        return resultData;
     }
 }

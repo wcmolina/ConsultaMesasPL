@@ -54,7 +54,7 @@ public class CitizensController {
 
     public void performQuery() {
         if (!queryInput.getText().isEmpty()) {
-            results.setItems(citizenDataAccess.findAll(queryInput.getText().toUpperCase()));
+            results.setItems(citizenDataAccess.findAll());
             detailsController.clearTextFields();
         }
     }
