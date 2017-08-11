@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.text.SimpleDateFormat;
 
-public class Citizen {
+public class Miembro {
 
     private SimpleIntegerProperty id = new SimpleIntegerProperty();
     private SimpleStringProperty primerNombre = new SimpleStringProperty();

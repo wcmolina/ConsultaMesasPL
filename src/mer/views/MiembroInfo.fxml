@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="mer.controllers.CitizenDetailsController">
+      fx:controller="mer.controllers.MiembroInfoController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
@@ -61,8 +61,8 @@
                 <Insets bottom="5.0"/>
             </VBox.margin>
         </Label>
-        <Hyperlink fx:id="editCitizen" text="Editar datos"/>
-        <Hyperlink fx:id="updateTable" text="Cambiar mesa"/>
-        <Hyperlink fx:id="removeTable" text="Quitar mesa"/>
+        <Hyperlink fx:id="editarMiembro" text="Editar datos"/>
+        <Hyperlink fx:id="cambiarMesa" text="Cambiar mesa"/>
+        <Hyperlink fx:id="quitarMesa" text="Quitar mesa"/>
     </VBox>
 </VBox>

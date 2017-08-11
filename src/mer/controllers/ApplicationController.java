@@ -1,6 +1,5 @@
 package mer.controllers;
 
-
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
@@ -19,14 +18,14 @@ public class ApplicationController {
         System.out.println("Init application");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/mer/views/Index.fxml"));
-            loader.setController(new ElectoralTablesController());
+            loader.setController(new MesaElectoralController());
             electoralTablesRootNode = loader.load();
 
             loader = new FXMLLoader(getClass().getResource("/mer/views/Index.fxml"));
-            loader.setController(new CitizensController());
+            loader.setController(new MiembroController());
             citizensRootNode = loader.load();
 
-            //Default main content: search by electoral tables
+            //Default main content: buscar by electoral tables
             changeToTableView();
         } catch (IOException e) {
             e.printStackTrace();
