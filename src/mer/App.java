@@ -1,12 +1,12 @@
 package mer;
 
+import com.google.common.eventbus.EventBus;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -25,6 +25,7 @@ public class App extends Application {
     private Pane splashLayout;
     private static final int SPLASH_WIDTH = 700;
     private static final int SPLASH_HEIGHT = 259;
+    public static final EventBus EVENT_BUS = new EventBus();
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -32,17 +33,9 @@ public class App extends Application {
 
     @Override
     public void init() {
-        ImageView splash = new ImageView(new Image(
-                SPLASH_IMAGE
-        ));
+        ImageView image = new ImageView(new Image(SPLASH_IMAGE));
         splashLayout = new VBox();
-        splashLayout.getChildren().addAll(splash);
-        splashLayout.setStyle(
-                "-fx-background-color: white; " +
-                        "-fx-border-width: 5; " +
-                        "-fx-border-color: darkred"
-        );
-        splashLayout.setEffect(new DropShadow());
+        splashLayout.getChildren().addAll(image);
     }
 
     @Override
@@ -51,33 +44,34 @@ public class App extends Application {
     }
 
     private void showMainStage() {
-        Stage stage = new Stage();
+        Stage mainStage = new Stage();
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("views/Application.fxml"));
+            root = FXMLLoader.load(getClass().getResource("views/Index.fxml"));
             root.getStylesheets().add("/mer/views/assets/styles.css");
-            stage.setTitle("Consulta de mesas electorales - Partido Liberal de Honduras");
-            stage.setScene(new Scene(root, 1060, 660));
-            stage.centerOnScreen();
-            stage.show();
+            mainStage.setTitle("Consulta de mesas electorales - Partido Liberal de Honduras");
+            mainStage.setScene(new Scene(root, 1060, 660));
+            mainStage.centerOnScreen();
+            mainStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void showSplash(final Stage initStage) {
+    private void showSplash(final Stage splash) {
         Scene splashScene = new Scene(splashLayout, Color.TRANSPARENT);
         final Rectangle2D bounds = Screen.getPrimary().getBounds();
-        initStage.setScene(splashScene);
-        initStage.setX(bounds.getMinX() + bounds.getWidth() / 2 - SPLASH_WIDTH / 2);
-        initStage.setY(bounds.getMinY() + bounds.getHeight() / 2 - SPLASH_HEIGHT / 2);
-        initStage.initStyle(StageStyle.TRANSPARENT);
-        initStage.setAlwaysOnTop(true);
-        initStage.show();
+        splash.setScene(splashScene);
+        splash.setX(bounds.getMinX() + bounds.getWidth() / 2 - SPLASH_WIDTH / 2);
+        splash.setY(bounds.getMinY() + bounds.getHeight() / 2 - SPLASH_HEIGHT / 2);
+        // Hides minimize, maximize, and close buttons
+        splash.initStyle(StageStyle.TRANSPARENT);
+        splash.setAlwaysOnTop(true);
+        splash.show();
 
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
-            initStage.hide();
+            splash.hide();
             showMainStage();
         });
         pause.play();

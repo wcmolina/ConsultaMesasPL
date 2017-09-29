@@ -4,20 +4,25 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.*?>
-<SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="477.0" prefWidth="774.0"
-           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-           AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="mer.controllers.IndexController">
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-              AnchorPane.topAnchor="0.0">
-            <fx:include source="Search.fxml" fx:id="searchBox"/>
-            <TableView fx:id="resultados" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
-                <placeholder>
-                    <Label text="Los resultados de su búsqueda se mostrarán aquí"/>
-                </placeholder>
-            </TableView>
-        </VBox>
-    </AnchorPane>
-    <AnchorPane fx:id="detalles" SplitPane.resizableWithParent="false"/>
-</SplitPane>
+
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mer.controllers.IndexController">
+    <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="477.0" prefWidth="774.0"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0">
+                <fx:include source="Search.fxml"/>
+                <TableView fx:id="mainTable" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+                    <placeholder>
+                        <Label text="Los resultados de su búsqueda se mostrarán aquí"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+        </AnchorPane>
+        <AnchorPane fx:id="detail" SplitPane.resizableWithParent="false"/>
+    </SplitPane>
+</AnchorPane>

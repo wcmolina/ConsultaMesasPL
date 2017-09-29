@@ -1,19 +1,26 @@
 package mer.controllers;
 
+import javafx.fxml.FXML;
 import mer.models.Miembro;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 
 public class MiembroInfoController {
-    public Hyperlink quitarMesa;
-    public Hyperlink cambiarMesa;
-    public Hyperlink editarMiembro;
-    public TextField nombreCompleto;
-    public TextField numeroMesa;
-    public TextField fechaNacimiento;
+    @FXML
+    private Hyperlink quitarMesa;
+    @FXML
+    private Hyperlink cambiarMesa;
+    @FXML
+    private Hyperlink editarMiembro;
+    @FXML
+    private TextField nombreCompleto;
+    @FXML
+    private TextField numeroMesa;
+    @FXML
+    private TextField fechaNacimiento;
 
     public void initialize() {
-        System.out.println("Init citizen details");
+        System.out.println("Init citizen detail");
     }
 
     public void displayCitizenDetails(Miembro miembro) {

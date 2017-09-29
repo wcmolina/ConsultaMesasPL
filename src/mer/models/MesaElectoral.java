@@ -3,7 +3,7 @@ package mer.models;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class MesaElectoral {
+public class MesaElectoral implements Entity {
     private SimpleIntegerProperty id = new SimpleIntegerProperty();
     private SimpleStringProperty departamento = new SimpleStringProperty();
     private SimpleStringProperty municipio = new SimpleStringProperty();
